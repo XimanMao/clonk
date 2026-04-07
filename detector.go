@@ -15,7 +15,7 @@ type bonkDetector struct {
 func newBonkDetector(threshold float64, cooldown time.Duration) *bonkDetector {
 	return &bonkDetector{
 		threshold: threshold,
-		cooldown:  cooldown,
+		cooldown: cooldown,
 	}
 }
 

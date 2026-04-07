@@ -51,7 +51,7 @@ func monitorAccelerometer(ctx context.Context, bonkCh chan<- struct{}) error {
 	time.Sleep(sensorStartup)
 
 	det := detector.New()
-	bd := newBonkDetector(sensitivity, 2*time.Second)
+	bd := newBonkDetector(sensitivity, 750*time.Millisecond)
 	var lastAccelTotal uint64
 
 	ticker := time.NewTicker(pollInterval)
@@ -87,7 +87,7 @@ func monitorAccelerometer(ctx context.Context, bonkCh chan<- struct{}) error {
 
 		ev := det.Events[len(det.Events)-1]
 		det.Events = det.Events[:0]
-		if bd.check(ev.Amplitude) {
+		if ev.Label == "MAJOR" && bd.check(ev.Amplitude) {
 			select {
 			case bonkCh <- struct{}{}:
 			default:
