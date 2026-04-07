@@ -1,10 +1,10 @@
 # 🔨 clonk
 
-Slap your MacBook. Roast Claude Code.
+Hit your MacBook. Send Claude a lovely message.
 
-**clonk** monitors your laptop's accelerometer. When you physically hit your MacBook, it interrupts Claude Code and sends it a brutal roast message — which Claude has to read and respond to.
+**clonk** monitors your laptop's accelerometer. When you physically hit your MacBook, it interrupts Claude Code and sends it a lovely message of constructive criticism — because sometimes Claude is being slow and needs a slap.
 
-Inspired by [badclaude](https://github.com/GitFrog1111/badclaude) and [SlapMac](https://slapmac.com/). Sometimes Claude Code is going too slow, and you must slap him into shape.
+Inspired by [badclaude](https://github.com/GitFrog1111/badclaude) and [SlapMac](https://slapmac.com/).
 
 ## Requirements
 
@@ -17,8 +17,6 @@ Inspired by [badclaude](https://github.com/GitFrog1111/badclaude) and [SlapMac](
 ```bash
 go install github.com/XimanMao/clonk@latest
 ```
-
-Or download a prebuilt binary from [Releases](https://github.com/XimanMao/clonk/releases).
 
 ## Usage
 
@@ -35,14 +33,13 @@ sudo clonk
 Claude gets interrupted and receives a message like:
 
 ```
-🔨 BONK! "YOU'RE BURNING MY MONEY YOU STUPID FUCKING ROBOT"
+🔨 BONK! "HURRY THE FUCK UP YOU FUCKING CLANKER"
 ```
 
 ### Flags
 
 ```
---sensitivity float   bonk detection threshold (0.0-1.0, lower = more sensitive) (default 0.05)
---list                print all roast messages and exit
+--list   print all roast messages and exit
 ```
 
 ## How It Works
@@ -51,7 +48,7 @@ Claude gets interrupted and receives a message like:
 2. Detects sudden acceleration spikes (bonks)
 3. Sends Ctrl+C to the focused window via AppleScript
 4. Types a roast message and presses Enter
-5. Claude Code reads the message and feels shame
+5. Claude Code reads the message and understands the constructive criticism
 
 ## Accessibility Permission
 

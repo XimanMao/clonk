@@ -10,13 +10,9 @@ import (
 	"syscall"
 )
 
-var (
-	sensitivity float64
-	listRoasts  bool
-)
+var listRoasts bool
 
 func init() {
-	flag.Float64Var(&sensitivity, "sensitivity", 0.05, "bonk detection threshold (0.0-1.0, lower = more sensitive)")
 	flag.BoolVar(&listRoasts, "list", false, "print all roast messages and exit")
 }
 

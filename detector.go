@@ -5,25 +5,20 @@ import (
 	"time"
 )
 
-// bonkDetector tracks bonk events with threshold and cooldown.
+// bonkDetector tracks bonk events with a cooldown.
 type bonkDetector struct {
-	threshold float64
-	cooldown  time.Duration
-	lastBonk  time.Time
+	cooldown time.Duration
+	lastBonk time.Time
 }
 
-func newBonkDetector(threshold float64, cooldown time.Duration) *bonkDetector {
+func newBonkDetector(cooldown time.Duration) *bonkDetector {
 	return &bonkDetector{
-		threshold: threshold,
 		cooldown: cooldown,
 	}
 }
 
-// check returns true if the amplitude exceeds threshold and cooldown has elapsed.
-func (d *bonkDetector) check(amplitude float64) bool {
-	if amplitude < d.threshold {
-		return false
-	}
+// check returns true if the cooldown has elapsed since the last bonk.
+func (d *bonkDetector) check() bool {
 	now := time.Now()
 	if !d.lastBonk.IsZero() && now.Sub(d.lastBonk) < d.cooldown {
 		return false
